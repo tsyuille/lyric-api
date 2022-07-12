@@ -1,83 +1,83 @@
 const express = require('express')
 const router = express.Router()
-const Question = require('./models/Question')
+const Lyric = require('./models/Lyric')
 
-// get all questions
-router.get('/questions', async (req, res) => {
+// get all lyrics
+router.get('/lyrics', async (req, res) => {
     try {
-        const questions = await Question.find()
-        return res.status(200).json(questions)
+        const lyrics = await Lyric.find()
+        return res.status(200).json(lyrics)
     } catch (error) {
         return res.status(500).json({'error': error})
     }
 })
 
-// get one question
-router.get('/questions/:id', async (req, res) => {
+// get one lyric
+router.get('/lyrics/:id', async (req, res) => {
     try {
         const _id = req.params.id
 
-        const question = await Question.findOne({_id})
-        if(!question){
+        const lyric = await Lyric.findOne({_id})
+        if(!lyric){
             return res.status(404).json({})
         } else {
-            return res.status(200).json(question)
+            return res.status(200).json(lyric)
         }
     } catch (error) {
         return res.status(500).json({'error': error})
     }
 })
 
-// create one question
-router.post('/questions', async (req, res) => {
+// create one lyric
+router.post('/lyrics', async (req, res) => {
     try {
         const { description } = req.body
         const { alternatives } = req.body
 
-        const question = await Question.create({
+        const lyric = await Lyric.create({
             description, 
             alternatives
         })
 
-        return res.status(201).json(question)
+        return res.status(201).json(lyric)
     } catch (error) {
         return res.status(500).json({'error': error})
     }
 })
 
-// update one question 
-router.put('/questions/:id', async (req, res) => {
+// update one lyric 
+router.put('/lyrics/:id', async (req, res) => {
     try {
         const _id = req.params.id
         const { description, alternatives } = req.body
 
-        let question = await Question.findOne({_id})
+        let lyric = await Lyric.findOne({_id})
 
-        if(!question){
-            question = await Question.create({
+        if(!lyric){
+            lyric = await Lyric.create({
                 description, 
                 alternatives
             })
-            return res.status(201).json(question)
+            return res.status(201).json(lyric)
         } else {
-            question.description = description
-            question.alternatives = alternatives
-            await question.save()
-            return res.status(200).json(question)
+            lyric.description = description
+            lyric.alternatives = alternatives
+            await lyric.save()
+            return res.status(200).json(lyric)
         }
     } catch (error) {
         return res.status(500).json({'error': error})
     }
 })
 
-// delete one question 
-router.delete('/questions/:id', async (req, res) => {
+// delete one lyric
+router.delete('/lyrics/:id', async (req, res) => {
     try {
         const _id = req.params.id
 
-        const question = await Question.deleteOne({_id})
+        const lyric = await Lyric.deleteOne({_id})
 
-        if(question.deletedCount === 0) {
+        if(lyric.deletedCount === 0) {
             return res.status(404).json()
         } else {
             return res.status(204).json()
