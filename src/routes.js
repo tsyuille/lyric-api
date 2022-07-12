@@ -2,6 +2,16 @@ const express = require('express')
 const router = express.Router()
 const Lyric = require('./models/Lyric')
 
+// homepage 
+router.get('/', async(req, res) => {
+    try{
+        res.render('lyrics', { title: 'Lyric API' })
+    }
+    catch(error) {
+        res.status(500).send({message: error.message || "Error Occurred"})
+    }
+})
+
 // get all lyrics
 router.get('/lyrics', async (req, res) => {
     try {
