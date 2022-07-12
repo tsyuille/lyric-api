@@ -14,6 +14,7 @@ app.use(expressLayouts)
 app.use(routes)
 
 app.set('view engine', 'ejs')
+app.set('layout', './layout/main')
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection

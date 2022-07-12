@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyric API</title>
+</head>
+<body>
+    <section class="text-center">
+        <h1 class="pb-4 display-5">Submit A Song Lyric</h1>
+    </section>
+    
+    <section class="row justify-content-center">
+      
+        <section class="col-8">
+          <form action="/lyrics" enctype="multipart/form-data" method="POST">
+            <section class="row g-3">
+              <section class="col-12">
+                <label for="lyric" class="form-label">Song Lyric</label>
+                <input type="text" name="lyric" id="lyric" class="form-control" required>
+              </section>
+              
+              <section class="col-12">
+                <label for="answer" class="form-label">Answers</label><br>
+                <section class="answerList">
+                  <section class="answerDiv mb-1">
+                    <input type="text" name="answers" class="form-control" required>
+                  </section>
+                </section>
+              </section>
+    
+              <section class="col-12">
+                <button type="button" class="btn btn-outline-primary" id="addAnswersBtn">+ Answer</button>
+              </section>
+      
+              <section class="col-12">
+                <button type="submit" class="btn btn-primary">Submit Recipe</button>
+              </section>
+            </section>
+          </form>
+        </section>
+    </section>
+</body>
+</html>
