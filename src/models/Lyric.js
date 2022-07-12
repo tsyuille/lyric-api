@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const QuestionSchema = new mongoose.Schema({
+const LyricSchema = new mongoose.Schema({
     description: String,
     alternatives: [
         {
@@ -17,4 +17,4 @@ const QuestionSchema = new mongoose.Schema({
     ]
 })
 
-module.exports = mongoose.model('Question', QuestionSchema)
+module.exports = mongoose.model('Lyric', LyricSchema)
